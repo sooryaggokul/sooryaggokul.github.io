@@ -1,46 +1,141 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soorya Gokul | Cave Portfolio</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SEO -->
 
-<title>Soorya | Cyber Cave Portfolio</title>
+  <meta name="description" content="Interactive cave portfolio of Soorya Gokul - Pentester & Security Researcher">
+  <meta name="theme-color" content="#000000">
 
-<link rel="stylesheet" href="style.css">
+  <!-- Fonts -->
 
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 
-<div class="intro">
-<h1>Entering Cyber Cave</h1>
-<p>Scroll to explore</p>
+<!-- ───────── CANVAS LAYERS ───────── -->
+
+<canvas id="cave"></canvas> <canvas id="fire"></canvas> <canvas id="dark"></canvas>
+
+<!-- ───────── EXPLORER CHARACTER ───────── -->
+
+<div id="explorer">
+  <svg viewBox="0 0 100 150">
+    <!-- Head -->
+    <circle cx="50" cy="30" r="14"/>
+
+```
+<!-- Body -->
+<rect x="42" y="45" width="16" height="38" rx="4"/>
+
+<!-- Arm holding torch -->
+<line x1="50" y1="60" x2="80" y2="40" stroke-width="5" stroke-linecap="round"/>
+
+<!-- Torch -->
+<circle cx="80" cy="40" r="4" fill="orange"/>
+```
+
+  </svg>
 </div>
 
-<div class="panel about">
-<h2>About Me</h2>
-<p>Cybersecurity enthusiast focused on penetration testing, bug bounty and vulnerability research.</p>
+<!-- ───────── NAV (minimal, immersive) ───────── -->
+
+<nav id="nav">
+  <div class="logo">S · G</div>
+  <div class="nav-hint">Scroll to Explore ↓</div>
+</nav>
+
+<!-- ───────── SECTION 1 ───────── -->
+
+<section class="reveal intro">
+  <div class="content">
+    <h1>ENTER THE CAVE</h1>
+    <p>Scroll down to explore the depths</p>
+  </div>
+</section>
+
+<!-- ───────── SECTION 2 ───────── -->
+
+<section class="reveal">
+  <div class="content">
+    <h2>ABOUT ME</h2>
+    <p>
+      I’m Soorya Gokul — a penetration tester who explores systems
+      like caves, finding hidden vulnerabilities before attackers do.
+    </p>
+  </div>
+</section>
+
+<!-- ───────── SECTION 3 ───────── -->
+
+<section class="reveal">
+  <div class="content">
+    <h2>SKILLS</h2>
+    <ul>
+      <li>Web Application Pentesting</li>
+      <li>API Security Testing</li>
+      <li>OSINT & Recon</li>
+      <li>Exploit Development</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ───────── SECTION 4 ───────── -->
+
+<section class="reveal">
+  <div class="content">
+    <h2>EXPERIENCE</h2>
+    <p>
+      Bug bounty hunter, CTF player, and security researcher with
+      hands-on experience finding real-world vulnerabilities.
+    </p>
+  </div>
+</section>
+
+<!-- ───────── SECTION 5 ───────── -->
+
+<section class="reveal">
+  <div class="content">
+    <h2>CONTACT</h2>
+    <p>Reach out if you want to collaborate or discuss security.</p>
+
+```
+<div class="links">
+  <a href="mailto:soorya27799@gmail.com">Email</a>
+  <a href="https://github.com/">GitHub</a>
+  <a href="https://linkedin.com/">LinkedIn</a>
 </div>
+```
 
-<div class="panel skills">
-<h2>Skills</h2>
-<p>Python • Django • Web Security • Burp Suite • Nmap</p>
-</div>
+  </div>
+</section>
 
-<div class="panel projects">
-<h2>Projects</h2>
-<p>Security research tools, vulnerability scanning and CTF writeups.</p>
-</div>
+<!-- ───────── FOOTER ───────── -->
 
-<div class="panel contact">
-<h2>Contact</h2>
-<p>soorya27799@gmail.com</p>
-</div>
+<footer>
+  <p>© 2026 Soorya Gokul · Ethical Hacker</p>
+</footer>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+<!-- ───────── SCRIPTS ───────── -->
 
-<script src="main.js"></script>
+<script src="js/cave.js"></script>
+
+<script src="js/fire.js"></script>
+
+<script src="js/darkness.js"></script>
+
+<script src="js/reveal.js"></script>
+
+<script src="js/main.js"></script>
 
 </body>
 </html>
