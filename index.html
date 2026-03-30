@@ -5,175 +5,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Soorya | Cyber Cave</title>
+<title>Soorya | Cyber Cave Portfolio</title>
 
 <link rel="stylesheet" href="style.css">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 </head>
 
 <body>
 
-<div id="overlay">
+<div class="intro">
 <h1>Entering Cyber Cave</h1>
-<p>Scroll to explore the system</p>
+<p>Scroll to explore</p>
 </div>
 
-<div id="panel-about" class="panel">
+<div class="panel about">
 <h2>About Me</h2>
-<p>Cybersecurity enthusiast exploring vulnerabilities and bug bounty hunting.</p>
+<p>Cybersecurity enthusiast focused on penetration testing, bug bounty and vulnerability research.</p>
 </div>
 
-<div id="panel-skills" class="panel">
+<div class="panel skills">
 <h2>Skills</h2>
-<p>Python • Django • Web Security • Penetration Testing</p>
+<p>Python • Django • Web Security • Burp Suite • Nmap</p>
 </div>
 
-<div id="panel-projects" class="panel">
+<div class="panel projects">
 <h2>Projects</h2>
-<p>Security research tools and vulnerability analysis.</p>
+<p>Security research tools, vulnerability scanning and CTF writeups.</p>
 </div>
 
-<div id="panel-contact" class="panel">
+<div class="panel contact">
 <h2>Contact</h2>
 <p>soorya27799@gmail.com</p>
 </div>
 
-<script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
 
-let scene = new THREE.Scene();
-
-let camera = new THREE.PerspectiveCamera(
-75,
-window.innerWidth/window.innerHeight,
-0.1,
-1000
-);
-
-let renderer = new THREE.WebGLRenderer({antialias:true});
-
-renderer.setSize(window.innerWidth,window.innerHeight);
-
-document.body.appendChild(renderer.domElement);
-
-
-
-/* Tunnel */
-
-let geometry = new THREE.CylinderGeometry(
-50,
-50,
-1000,
-32,
-32,
-true
-);
-
-let material = new THREE.MeshBasicMaterial({
-color:0x001100,
-wireframe:true
-});
-
-let tunnel = new THREE.Mesh(geometry,material);
-
-tunnel.rotation.x=Math.PI/2;
-
-scene.add(tunnel);
-
-
-
-/* Matrix particles */
-
-let particlesGeometry = new THREE.BufferGeometry();
-
-let particlesCount = 2000;
-
-let posArray = new Float32Array(particlesCount * 3);
-
-for(let i=0;i<particlesCount*3;i++){
-
-posArray[i]=(Math.random()-0.5)*400;
-
-}
-
-particlesGeometry.setAttribute(
-'position',
-new THREE.BufferAttribute(posArray,3)
-);
-
-let particlesMaterial = new THREE.PointsMaterial({
-size:1,
-color:0x00ff88
-});
-
-let particlesMesh = new THREE.Points(
-particlesGeometry,
-particlesMaterial
-);
-
-scene.add(particlesMesh);
-
-
-
-/* Camera start */
-
-camera.position.z = 5;
-
-
-
-/* Scroll movement */
-
-let scrollPosition = 0;
-
-window.addEventListener("scroll",()=>{
-
-scrollPosition = window.scrollY * 0.05;
-
-camera.position.z = 5 + scrollPosition;
-
-});
-
-
-
-/* Animation */
-
-function animate(){
-
-requestAnimationFrame(animate);
-
-particlesMesh.rotation.z += 0.001;
-
-renderer.render(scene,camera);
-
-}
-
-animate();
-
-
-
-/* Floating panels appear */
-
-window.addEventListener("scroll",()=>{
-
-let scroll = window.scrollY;
-
-document.querySelectorAll(".panel").forEach((panel,i)=>{
-
-let start = (i+1)*600;
-
-if(scroll > start){
-
-panel.style.opacity = 1;
-panel.style.transform = "translateY(0px)";
-
-}
-
-});
-
-});
-
-</script>
+<script src="main.js"></script>
 
 </body>
 </html>
