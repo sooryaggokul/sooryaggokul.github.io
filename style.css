@@ -2,176 +2,90 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Poppins,sans-serif;
+font-family:monospace;
 }
 
 body{
-background:#050505;
-color:#00ff9f;
-overflow-x:hidden;
-}
-
-#matrix{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-1;
-}
-
-nav{
-display:flex;
-justify-content:space-between;
-padding:20px 10%;
-position:fixed;
-width:100%;
-background:rgba(0,0,0,0.7);
-z-index:10;
-}
-
-nav ul{
-list-style:none;
-display:flex;
-}
-
-nav ul li{
-margin-left:20px;
-}
-
-nav ul li a{
-text-decoration:none;
-color:#00ff9f;
-}
-
-.logo{
-color:#00ff9f;
-}
-
-.cave-container{
-perspective:1200px;
-}
-
-.cave-section{
-
-min-height:100vh;
-
-display:flex;
-flex-direction:column;
-
-justify-content:center;
-align-items:center;
-
-padding:100px 10%;
-
-transform-style:preserve-3d;
-
-transition:transform 0.6s ease;
-
-text-align:center;
-
-}
-
-.cave-section:nth-child(1){
-transform:translateZ(-200px) scale(1.2);
-}
-
-.cave-section:nth-child(2){
-transform:translateZ(-100px) scale(1.1);
-}
-
-.cave-section:nth-child(3){
-transform:translateZ(0px);
-}
-
-.cave-section:nth-child(4){
-transform:translateZ(100px) scale(0.9);
-}
-
-.cave-section:nth-child(5){
-transform:translateZ(200px) scale(0.8);
-}
-
-.grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:30px;
-
-margin-top:40px;
-
-}
-
-.card{
-
-background:#0f0f0f;
-
-padding:30px;
-
-border-radius:10px;
-
-border:1px solid rgba(0,255,159,0.2);
-
-transition:0.3s;
-
-}
-
-.card:hover{
-
-transform:translateY(-10px);
-
-background:#00ff9f;
-
-color:black;
-
-}
-
-.card i{
-font-size:40px;
-margin-bottom:10px;
-}
-
-.btn{
-
-background:#00ff9f;
-
-padding:12px 30px;
-
-color:black;
-
-text-decoration:none;
-
-border-radius:30px;
-
-margin-top:20px;
-
-}
-
-.cert-list li{
-margin:10px 0;
-}
-
-.social a{
-
-font-size:30px;
-
-margin:10px;
-
-color:#00ff9f;
-
-}
-
-footer{
-
-text-align:center;
-
-padding:30px;
 
 background:black;
 
+color:#00ff9f;
+
+height:5000px;
+
+overflow-x:hidden;
+
 }
+
+.scene{
+
+position:fixed;
+
+width:100%;
+
+height:100vh;
+
+perspective:800px;
+
+overflow:hidden;
+
+}
+
+.cave{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+transform-style:preserve-3d;
+
+}
+
+.layer{
+
+position:absolute;
+
+width:100%;
+
+height:100vh;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+}
+
+/* Cave Depth */
+
+.hero{
+transform:translateZ(-200px);
+}
+
+.about{
+transform:translateZ(-600px);
+}
+
+.skills{
+transform:translateZ(-1000px);
+}
+
+.projects{
+transform:translateZ(-1400px);
+}
+
+.contact{
+transform:translateZ(-1800px);
+}
+
+/* Cave Lighting */
 
 body::after{
 
@@ -189,6 +103,32 @@ pointer-events:none;
 
 background:radial-gradient(circle at center,
 transparent 150px,
-rgba(0,0,0,0.95) 400px);
+rgba(0,0,0,0.95) 500px);
 
+}
+
+/* Text Styling */
+
+h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+h2{
+font-size:40px;
+margin-bottom:20px;
+}
+
+p{
+max-width:600px;
+line-height:1.6;
+}
+
+ul{
+list-style:none;
+}
+
+li{
+margin:10px 0;
+font-size:20px;
 }
