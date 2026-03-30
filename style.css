@@ -7,46 +7,39 @@ font-family:monospace;
 
 body{
 background:black;
-color:#00ff9f;
+color:#00ff88;
+height:6000px;
 overflow-x:hidden;
-height:5000px;
 }
 
-/* Overlay intro */
+/* canvas */
 
-#overlay{
-
+canvas{
 position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
 
+/* intro */
+
+.intro{
+position:fixed;
 top:40%;
-
 left:50%;
-
 transform:translate(-50%,-50%);
-
 text-align:center;
-
-z-index:10;
-
 }
 
-#overlay h1{
-
-font-size:50px;
-
-margin-bottom:10px;
-
+.intro h1{
+font-size:48px;
 }
 
-#overlay p{
-
-font-size:20px;
-
+.intro p{
 opacity:0.7;
-
 }
 
-/* Floating panels */
+/* panels */
 
 .panel{
 
@@ -64,30 +57,16 @@ border:1px solid #00ff88;
 
 padding:20px;
 
-border-radius:8px;
-
-color:#00ff88;
+border-radius:10px;
 
 opacity:0;
 
-transform:translateY(100px);
+transform:translateY(80px);
 
-transition:all 0.8s ease;
+transition:0.6s;
 
 }
 
 .panel h2{
-
 margin-bottom:10px;
-
-}
-
-canvas{
-
-position:fixed;
-
-top:0;
-
-left:0;
-
 }
