@@ -6,307 +6,70 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Soorya Gokul | Cybersecurity Portfolio</title>
+<title>Soorya | Cyber Cave</title>
 
 <link rel="stylesheet" href="style.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<link rel="stylesheet"
-href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 
 </head>
 
 <body>
 
-<canvas id="matrix"></canvas>
+<div class="scene">
 
-<nav>
+<div class="cave">
 
-<h2 class="logo">Soorya</h2>
-
-<ul>
-
-<li><a href="#about">About</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#ctf">CTF</a></li>
-<li><a href="#certifications">Certifications</a></li>
-<li><a href="#contact">Contact</a></li>
-
-</ul>
-
-</nav>
-
-
-<div class="cave-container">
-
-
-<section class="cave-section hero">
-
-<h1>Entering the Cyber Cave</h1>
-
-<p class="typing"></p>
-
-<a href="#about" class="btn">Enter</a>
-
+<section class="layer hero">
+<h1>Entering The Cyber Cave</h1>
+<p>Scroll to explore</p>
 </section>
 
-
-<section id="about" class="cave-section">
-
+<section class="layer about">
 <h2>About Me</h2>
-
 <p>
-
-Cybersecurity enthusiast and Python developer exploring ethical hacking,
-penetration testing and vulnerability research. I enjoy understanding
-how systems work and discovering security weaknesses.
-
+Cybersecurity enthusiast exploring vulnerabilities,
+penetration testing and bug bounty hunting.
 </p>
-
 </section>
 
-
-<section id="skills" class="cave-section">
-
-<h2>Technical Skills</h2>
-
-<div class="grid">
-
-<div class="card">
-<i class="fa-brands fa-python"></i>
-<h3>Python</h3>
-</div>
-
-<div class="card">
-<i class="fa-solid fa-laptop-code"></i>
-<h3>Django</h3>
-</div>
-
-<div class="card">
-<i class="fa-brands fa-html5"></i>
-<h3>HTML</h3>
-</div>
-
-<div class="card">
-<i class="fa-brands fa-css3"></i>
-<h3>CSS</h3>
-</div>
-
-<div class="card">
-<i class="fa-brands fa-js"></i>
-<h3>JavaScript</h3>
-</div>
-
-<div class="card">
-<i class="fa-brands fa-bootstrap"></i>
-<h3>Bootstrap</h3>
-</div>
-
-</div>
-
-</section>
-
-
-<section id="projects" class="cave-section">
-
-<h2>GitHub Projects</h2>
-
-<div id="github-projects" class="grid"></div>
-
-</section>
-
-
-<section id="ctf" class="cave-section">
-
-<h2>Bug Bounty & CTF</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Secure Upload CTF</h3>
-<p>Bypassed upload filters including MIME and extension validation.</p>
-</div>
-
-<div class="card">
-<h3>Legacy Leaks</h3>
-<p>Enumeration of FTP, SMB and SSH services.</p>
-</div>
-
-<div class="card">
-<h3>Host Header Injection</h3>
-<p>Identified Host Header Injection vulnerability.</p>
-</div>
-
-</div>
-
-</section>
-
-
-<section id="certifications" class="cave-section">
-
-<h2>Certifications</h2>
-
-<ul class="cert-list">
-
-<li>Certified Penetration Tester</li>
-<li>Ethical Hacking Essentials</li>
-<li>Python Full Stack Developer</li>
-
+<section class="layer skills">
+<h2>Skills</h2>
+<ul>
+<li>Python</li>
+<li>Django</li>
+<li>Web Security</li>
+<li>Bug Hunting</li>
 </ul>
-
 </section>
 
+<section class="layer projects">
+<h2>Projects</h2>
+<p>Security research and tools.</p>
+</section>
 
-<section id="contact" class="cave-section">
-
+<section class="layer contact">
 <h2>Contact</h2>
-
-<div class="social">
-
-<a href="#"><i class="fab fa-linkedin"></i></a>
-<a href="https://github.com/sooryaggokul"><i class="fab fa-github"></i></a>
-<a href="#"><i class="fab fa-instagram"></i></a>
-
-</div>
-
-<p>Email : soorya27799@gmail.com</p>
-
+<p>soorya27799@gmail.com</p>
 </section>
 
+</div>
 
 </div>
 
-
-<footer>
-
-<p>Let's learn, share knowledge and grow together ❤️</p>
-
-</footer>
-
-
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-<script>
-AOS.init({duration:1200});
-</script>
-
-
 <script>
 
-const text=[
-"Cybersecurity Researcher",
-"Bug Bounty Hunter",
-"Python Developer",
-"CTF Player"
-];
+let scrollY=0;
 
-let count=0;
-let index=0;
-let currentText="";
-let letter="";
+window.addEventListener("scroll",()=>{
 
-(function type(){
+scrollY=window.scrollY;
 
-if(count===text.length){
-count=0;
-}
-
-currentText=text[count];
-letter=currentText.slice(0,++index);
-
-document.querySelector(".typing").textContent=letter;
-
-if(letter.length===currentText.length){
-count++;
-index=0;
-setTimeout(type,1500);
-}else{
-setTimeout(type,100);
-}
-
-})();
-
-</script>
-
-
-<script>
-
-fetch("https://api.github.com/users/sooryaggokul/repos")
-
-.then(res=>res.json())
-
-.then(data=>{
-
-const container=document.getElementById("github-projects");
-
-data.slice(0,6).forEach(repo=>{
-
-const card=document.createElement("div");
-
-card.className="card";
-
-card.innerHTML=`
-<h3>${repo.name}</h3>
-<p>${repo.description || "Cybersecurity Project"}</p>
-<a href="${repo.html_url}" target="_blank">View Repo</a>
-`;
-
-container.appendChild(card);
+document.querySelector(".cave").style.transform=
+`translateZ(${scrollY * -2}px)`;
 
 });
-
-});
-
-</script>
-
-
-<script>
-
-const canvas=document.getElementById("matrix");
-const ctx=canvas.getContext("2d");
-
-canvas.height=window.innerHeight;
-canvas.width=window.innerWidth;
-
-const letters="01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const matrix=letters.split("");
-
-const fontSize=14;
-const columns=canvas.width/fontSize;
-
-const drops=[];
-
-for(let x=0;x<columns;x++)drops[x]=1;
-
-function draw(){
-
-ctx.fillStyle="rgba(0,0,0,0.05)";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle="#00ff9f";
-ctx.font=fontSize+"px monospace";
-
-for(let i=0;i<drops.length;i++){
-
-const text=matrix[Math.floor(Math.random()*matrix.length)];
-
-ctx.fillText(text,i*fontSize,drops[i]*fontSize);
-
-if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
-drops[i]=0;
-
-drops[i]++;
-
-}
-
-}
-
-setInterval(draw,33);
 
 </script>
 
 </body>
+
 </html>
