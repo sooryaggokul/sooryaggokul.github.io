@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -10,66 +9,171 @@
 
 <link rel="stylesheet" href="style.css">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
 </head>
 
 <body>
 
-<div class="scene">
-
-<div class="cave">
-
-<section class="layer hero">
-<h1>Entering The Cyber Cave</h1>
-<p>Scroll to explore</p>
-</section>
-
-<section class="layer about">
-<h2>About Me</h2>
-<p>
-Cybersecurity enthusiast exploring vulnerabilities,
-penetration testing and bug bounty hunting.
-</p>
-</section>
-
-<section class="layer skills">
-<h2>Skills</h2>
-<ul>
-<li>Python</li>
-<li>Django</li>
-<li>Web Security</li>
-<li>Bug Hunting</li>
-</ul>
-</section>
-
-<section class="layer projects">
-<h2>Projects</h2>
-<p>Security research and tools.</p>
-</section>
-
-<section class="layer contact">
-<h2>Contact</h2>
-<p>soorya27799@gmail.com</p>
-</section>
-
+<div id="overlay">
+<h1>Entering Cyber Cave</h1>
+<p>Scroll to explore the system</p>
 </div>
 
+<div id="panel-about" class="panel">
+<h2>About Me</h2>
+<p>Cybersecurity enthusiast exploring vulnerabilities and bug bounty hunting.</p>
+</div>
+
+<div id="panel-skills" class="panel">
+<h2>Skills</h2>
+<p>Python • Django • Web Security • Penetration Testing</p>
+</div>
+
+<div id="panel-projects" class="panel">
+<h2>Projects</h2>
+<p>Security research tools and vulnerability analysis.</p>
+</div>
+
+<div id="panel-contact" class="panel">
+<h2>Contact</h2>
+<p>soorya27799@gmail.com</p>
 </div>
 
 <script>
 
-let scrollY=0;
+let scene = new THREE.Scene();
+
+let camera = new THREE.PerspectiveCamera(
+75,
+window.innerWidth/window.innerHeight,
+0.1,
+1000
+);
+
+let renderer = new THREE.WebGLRenderer({antialias:true});
+
+renderer.setSize(window.innerWidth,window.innerHeight);
+
+document.body.appendChild(renderer.domElement);
+
+
+
+/* Tunnel */
+
+let geometry = new THREE.CylinderGeometry(
+50,
+50,
+1000,
+32,
+32,
+true
+);
+
+let material = new THREE.MeshBasicMaterial({
+color:0x001100,
+wireframe:true
+});
+
+let tunnel = new THREE.Mesh(geometry,material);
+
+tunnel.rotation.x=Math.PI/2;
+
+scene.add(tunnel);
+
+
+
+/* Matrix particles */
+
+let particlesGeometry = new THREE.BufferGeometry();
+
+let particlesCount = 2000;
+
+let posArray = new Float32Array(particlesCount * 3);
+
+for(let i=0;i<particlesCount*3;i++){
+
+posArray[i]=(Math.random()-0.5)*400;
+
+}
+
+particlesGeometry.setAttribute(
+'position',
+new THREE.BufferAttribute(posArray,3)
+);
+
+let particlesMaterial = new THREE.PointsMaterial({
+size:1,
+color:0x00ff88
+});
+
+let particlesMesh = new THREE.Points(
+particlesGeometry,
+particlesMaterial
+);
+
+scene.add(particlesMesh);
+
+
+
+/* Camera start */
+
+camera.position.z = 5;
+
+
+
+/* Scroll movement */
+
+let scrollPosition = 0;
 
 window.addEventListener("scroll",()=>{
 
-scrollY=window.scrollY;
+scrollPosition = window.scrollY * 0.05;
 
-document.querySelector(".cave").style.transform=
-`translateZ(${scrollY * -2}px)`;
+camera.position.z = 5 + scrollPosition;
+
+});
+
+
+
+/* Animation */
+
+function animate(){
+
+requestAnimationFrame(animate);
+
+particlesMesh.rotation.z += 0.001;
+
+renderer.render(scene,camera);
+
+}
+
+animate();
+
+
+
+/* Floating panels appear */
+
+window.addEventListener("scroll",()=>{
+
+let scroll = window.scrollY;
+
+document.querySelectorAll(".panel").forEach((panel,i)=>{
+
+let start = (i+1)*600;
+
+if(scroll > start){
+
+panel.style.opacity = 1;
+panel.style.transform = "translateY(0px)";
+
+}
+
+});
 
 });
 
 </script>
 
 </body>
-
 </html>
